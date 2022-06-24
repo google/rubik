@@ -1,0 +1,3 @@
+channel,content_language,target_country,offer_id1,merchant_id1,image_link1,additional_image1|additional_image2|additional_image3
+channel,content_language,target_country,offer_id2,merchant_id2,image_link2,additional_image21|additional_image22|additional_image23
+channel,content_language,target_country,offer_id3,merchant_id2,image_link3,additional_image31|additional_image32|additional_image33

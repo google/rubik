@@ -1,0 +1,6 @@
+venv
+.idea
+__pycache__
+run_local_mine.sh
+sample_mine.csv
+rubik.log
