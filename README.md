@@ -1,4 +1,4 @@
-# Agamotto
+# Rubik
 
 Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
 
@@ -9,7 +9,7 @@ The main image is reproved, but the additional images can be approved. Rubik wil
 Rubik have a single only execution:
 
 ``` shell
-git clone https://github.com/google/agamotto
+git clone https://github.com/google/rubik
 cd rubik
 python3 main.py
 ```
