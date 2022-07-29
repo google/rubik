@@ -6,15 +6,15 @@ The main image is reproved, but the additional images can be approved. Rubik wil
 
 ## How it Works?
 
-The Problem
+### The Problem
 
 When uploading new offers on Merchant Center, the Main Image may contain logos, additional text or any other component that will reprove the offer on the near future and can be fixed by a new upload (Please see: https://support.google.com/merchants/answer/6101131?hl=en).
 
-How to Avoid this Problem
+### How to Avoid this Problem
 
-Every Offer need to follow Merchant Center Guidelines to have a better long-term performance: https://support.google.com/merchants/answer/6324350?hl=en#:~:text=We%20recommend%20images%20of%20at%20least%20800%20x%20800%20pixels.&text=Frame%20your%20product%20in%20the,%25%2C%20of%20the%20full%20image.
+Every Offer need to follow Merchant Center Guidelines to have a better long-term performance: [Merchant Center Guidelines](https://support.google.com/merchants/answer/6324350?hl=en#:~:text=We%20recommend%20images%20of%20at%20least%20800%20x%20800%20pixels.&text=Frame%20your%20product%20in%20the,%25%2C%20of%20the%20full%20image).
 
-Rubik
+### Rubik
 
 Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
 
@@ -24,10 +24,14 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 ### Prerequisites
 
- - Merchant Center API enabled on GCP
- - A local or virtual machine with python3
- - OAuth Credentials on GCP, with CLIENT_ID and CLIENT_SECRET
- - Big Query, if you don't want to use a CSV
+ 1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
+ 2. Machine with python3 (Required)
+ 3. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
+    - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
+    - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
+        - Application Type: Desktop
+        - Name: rubik-desktop (can be anything)
+ - Big Query (Optional).
 
 ### Deploy
 
@@ -58,5 +62,10 @@ python3 main.py --runner DirectRunner --csv=sample.csv --client_id=<YOUR_CLIENT_
 
 ```
 
+### Troubleshooting
+
+### Questions or Suggestions?
+
+Please use the Issues tab, we will respond :)
 
 
