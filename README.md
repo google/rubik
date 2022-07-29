@@ -18,7 +18,7 @@ Every Offer need to follow Merchant Center Guidelines to have a better long-term
 
 Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
 
-![Rubik Example](images/rubik_1.png?raw=true "Rubik Example")
+![Rubik Example](images/rubik_2.png?raw=true "Rubik Example")
 
 ## Deploy
 
@@ -66,6 +66,6 @@ python3 main.py --runner DirectRunner --csv=sample.csv --client_id=<YOUR_CLIENT_
 
 ### Questions or Suggestions?
 
-Please use the Issues tab, we will respond :)
+Please use the https://github.com/google/rubik/issues tab, we will respond :)
 
 
