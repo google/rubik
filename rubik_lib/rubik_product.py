@@ -48,7 +48,7 @@ def rubik_product_from_csv_line(line: str) -> RubikProduct:
 
 def rubik_product_from_big_query_row(row):
     product_id = f"{row['channel']}:{row['content_language']}:{row['target_country']}:{row['offer_id']}"
-    merchant_id = row['merchant_id']
+    merchant_id = f"{row['merchant_id']}"
     image_link = row['image_link']
     additional_image_links = row['additional_image_links']
     return RubikProduct(product_id, merchant_id, image_link, additional_image_links)

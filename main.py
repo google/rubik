@@ -63,8 +63,10 @@ def run(argv=None):
              | "Group by Merchant Id" >> beam.GroupByKey()
              | "Batch elements" >> beam.ParDo(BatchElements(rubik_options.batch_size)).with_output_types(
                         Tuple[str, List[RubikProduct]])
-             | beam.ParDo(MerchantCenterUpdaterDoFn(rubik_options.client_id, rubik_options.client_secret,
-                                                    rubik_options.access_token, rubik_options.refresh_token)))
+             | "Upload to Merchant Center" >> beam.ParDo(
+                        MerchantCenterUpdaterDoFn(rubik_options.client_id, rubik_options.client_secret,
+                                                  rubik_options.access_token, rubik_options.refresh_token))
+             )
 
 
 if __name__ == "__main__":
