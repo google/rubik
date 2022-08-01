@@ -12,9 +12,10 @@
 -- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
+-- Template for creating the required table for Rubik on BigQuery.
 
 
-CREATE OR REPLACE VIEW `project.dataset.tablename` AS (
+CREATE OR REPLACE TABLE `project.dataset.tablename` AS (
     WITH
         ProductTable AS (
             SELECT *, DATE(_PARTITIONTIME) AS `date`
