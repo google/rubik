@@ -1,4 +1,4 @@
-# Rubik <img src="https://github.com/google/rubik/blob/adding_sheet/images/rubik_logo.png?raw=true" width="27" height="27">
+# <img src="https://github.com/google/rubik/blob/adding_sheet/images/rubik_logo.png?raw=true" width="45" height="45"> Rubik 
 
 Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
 
