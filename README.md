@@ -18,6 +18,8 @@ Every Offer need to follow Merchant Center Guidelines to have a better long-term
 
 Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
 
+
+<img src="/../main/assets/images/rubik_2.png?raw=true" height="400px">
 ![Rubik Example](images/rubik_2.png?raw=true "Rubik Example")
 
 ## How to Use
