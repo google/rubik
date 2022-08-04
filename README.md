@@ -1,4 +1,4 @@
-# Rubik ![img|320x271](images/logo.png?raw=true "Rubik Logo")
+# Rubik ![img|320x271](images/rubik_logo.png?raw=true "Rubik Logo")
 
 Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
 
@@ -24,8 +24,8 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 ### Sheets Version (Manual)
 
-1. Copy this Spreadsheet: ![Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
-2. Read this Documentation: ![Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
+1. Copy this Spreadsheet: [Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
+2. Read this Documentation: [Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
 3. If you have any questions, please reach out in Discussions tab
 
 ### Cloud Version (Automatic)
