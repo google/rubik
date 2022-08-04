@@ -1,4 +1,4 @@
-# <img src="https://github.com/google/rubik/blob/adding_sheet/images/rubik_logo.png?raw=true" width="200" height="90">
+# <img src="https://github.com/google/rubik/blob/main/images/rubik_logo.png?raw=true" width="200" height="90">
 
 Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
 
@@ -19,7 +19,7 @@ Every Offer need to follow Merchant Center Guidelines to have a better long-term
 Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
 
 
-<img src="/../main/assets/images/rubik_2.png?raw=true" height="400px">
+<img src="https://github.com/google/rubik/blob/main/images/rubik_2.png?raw=true" height="400px">
 ![Rubik Example](images/rubik_2.png?raw=true "Rubik Example")
 
 ## How to Use
