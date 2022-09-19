@@ -27,7 +27,9 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 1. Copy this Spreadsheet: [Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
 2. Read this Documentation: [Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
-3. If you have any questions, please reach out in Discussions tab
+3. Merchant Center Admin Acess (Account Access -> Users)
+4. If you have any questions, please reach out in Discussions tab
+
 
 ### Cloud Version (Automatic)
 
@@ -35,12 +37,13 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
  1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
  2. Machine with python3 (Required)
- 3. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
+ 3. Merchant Center Admin Acess (Account Access -> Users)
+ 4. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
     - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
     - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
         - Application Type: Desktop
         - Name: rubik-desktop (can be anything)
- 4. Big Query (Optional).
+ 5. Big Query (Optional).
 
 #### Deploy
 
@@ -54,20 +57,20 @@ cd rubik
 python3 generate_token.py --client_id <GCP_CLIENT_ID> --client_secret <GCP_CLIENT_SECRET>
 ```
 
-3 - Execute Rubik, look at rubik.log to see the output:
+3 - Execute Rubik, look at rubik.log to see the output. Before running the run_local.sh, enter the necessary information:
 
-Using CSV:
+Using CSV (remember to set option to CSV):
 
 ``` python3
 
-python3 main.py --runner DirectRunner --csv=sample.csv --client_id=<YOUR_CLIENT_ID>  --client_secret=<YOUR_CLIENT_SECRET> --access_token=<YOUR_ACCESS_TOKEN> --refresh_token=<YOUR_REFRESH_TOKEN>
+./run_local.sh
 
 ```
-Using Bigquery:
+Using Bigquery (remember to set option to BQ):
 
 ``` python3
 
-python3 main.py --runner DirectRunner --csv=sample.csv --client_id=<YOUR_CLIENT_ID>  --client_secret=<YOUR_CLIENT_SECRET> --access_token=<YOUR_ACCESS_TOKEN> --refresh_token=<YOUR_REFRESH_TOKEN>
+./run_local.sh
 
 ```
 
