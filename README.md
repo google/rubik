@@ -27,7 +27,7 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 1. Copy this Spreadsheet: [Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
 2. Read this Documentation: [Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
-3. Merchant Center Admin Acess
+3. Merchant Center Admin Acess (Account Access -> Users)
 4. If you have any questions, please reach out in Discussions tab
 
 
@@ -37,7 +37,7 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
  1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
  2. Machine with python3 (Required)
- 3. Merchant Center Admin Acess
+ 3. Merchant Center Admin Acess (Account Access -> Users)
  4. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
     - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
     - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
