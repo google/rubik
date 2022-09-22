@@ -24,7 +24,7 @@ from urllib import parse
 from google_auth_oauthlib.flow import InstalledAppFlow
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError
 
-SCOPES = ['https://www.googleapis.com/auth/content']
+SCOPES = ['https://www.googleapis.com/auth/content', 'https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/cloud-platform.read-only', 'https://www.googleapis.com/auth/cloud-vision']
 
 # The redirect URI set for the given Client ID. The redirect URI for Client ID
 # generated for an installed application will always have this value.
