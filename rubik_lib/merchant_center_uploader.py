@@ -56,35 +56,37 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
         pass
 
     def process(self, batch: Tuple[str, List[RubikProduct]], **kwargs):
-        merchant_id, products = batch
-        request_body = {
-            'entries': [{
-                'batchId': i,
-                'merchantId': merchant_id,
-                'productId': product.product_id,
-                'method': 'update',
-                'updateMask': 'imageLink,additionalImageLinks',
-                'product': {
-                    'imageLink': product.image_link,
-                    'additionalImageLinks': product.additional_image_links
-                }
-            } for i, product in enumerate(products)]
-        }
+        try:
+            merchant_id, products = batch
+            request_body = {
+                'entries': [{
+                    'batchId': i,
+                    'merchantId': merchant_id,
+                    'productId': product.product_id,
+                    'method': 'update',
+                    'updateMask': 'imageLink,additionalImageLinks',
+                    'product': {
+                        'imageLink': product.image_link,
+                        'additionalImageLinks': product.additional_image_links
+                    }
+                } for i, product in enumerate(products)]
+            }
 
-        logger.info(f"Making request: {request_body}")
+            logger.info(f"Making request: {request_body}")
 
-        request = self._get_merchant_center_service().products().custombatch(body=request_body)
-        result = request.execute()
-
-        if result['kind'] == 'content#productsCustomBatchResponse':
-            entries = result['entries']
-            for entry in entries:
-                product = entry.get('product')
-                errors = entry.get('errors')
-                if product:
-                    logger.info(f"Product {product['id']} was updated.")
-                elif errors:
-                    logger.error(f"Errors for batch entry {entry['batchId']}:")
-                    logger.error(json.dumps(errors, sort_keys=True, indent=2, separators=(',', ': ')))
-        else:
-            logger.error(f"There was an error. Response: {result}")
+            request = self._get_merchant_center_service().products().custombatch(body=request_body)
+            result = request.execute()
+            if result['kind'] == 'content#productsCustomBatchResponse':
+                entries = result['entries']
+                for entry in entries:
+                    product = entry.get('product')
+                    errors = entry.get('errors')
+                    if product:
+                        logger.info(f"Product {product['id']} was updated.")
+                    elif errors:
+                        logger.error(f"Errors for batch entry {entry['batchId']}:")
+                        logger.error(json.dumps(errors, sort_keys=True, indent=2, separators=(',', ': ')))
+            else:
+                logger.error(f"There was an error. Response: {result}")
+        except Exception as ex:
+            logger.error(ex)
