@@ -35,16 +35,17 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 #### Prerequisites
 
- 1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
- 2. Machine with python3 (Required)
+ 1. Content API - Enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
+ 2. Machine with Docker and Python3+ (Required)
  3. Merchant Center Admin Acess (Account Access -> Users), your user need to be MCA admin and with validated status
  4. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
     - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
     - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
         - Application Type: Desktop
         - Name: rubik-desktop (can be anything)
- 5. Google Big Query
- 6. Google Cloud Storage
+ 5. Google Big Query - Enabled (Required)
+ 6. Google Cloud Storage - Bucket created (Required)
+ 7. Google Cloud Vision AI - Enabled on your GCP project (Required) (https://cloud.google.com/vision)
 
 #### Test
 
