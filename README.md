@@ -37,15 +37,16 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
  1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
  2. Machine with python3 (Required)
- 3. Merchant Center Admin Acess (Account Access -> Users)
+ 3. Merchant Center Admin Acess (Account Access -> Users), your user need to be MCA admin and with validated status
  4. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
     - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
     - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
         - Application Type: Desktop
         - Name: rubik-desktop (can be anything)
- 5. Big Query (Optional).
+ 5. Google Big Query
+ 6. Google Cloud Storage
 
-#### Deploy
+#### Test
 
 1 - Prepare the CSV file (follow the sample.CSV) or Bigquery table (follow the sql/rubik_view.sql)
 
@@ -57,20 +58,24 @@ cd rubik
 python3 generate_token.py --client_id <GCP_CLIENT_ID> --client_secret <GCP_CLIENT_SECRET>
 ```
 
-3 - Execute Rubik, look at rubik.log to see the output. Before running the run_local.sh, enter the necessary information:
+3 - Fill rubik.yaml file with your values. If CSV file is informed, it will execute only the CSV file.
 
-Using CSV (remember to set option to CSV):
+4 - Run:
 
 ``` python3
 
-./run_local.sh
+python3.7 main.py rubik.yaml
 
 ```
-Using Bigquery (remember to set option to BQ):
 
-``` python3
+#### Deploy
 
-./run_local.sh
+1 - Use the following, don't forget to check if rubik.yaml and your gcp-rubik-project is configured:
+
+``` docker
+
+docker build --no-cache . -t rubik:latest
+docker run --rm rubik:latest
 
 ```
 
@@ -78,8 +83,8 @@ Using Bigquery (remember to set option to BQ):
 
 ### Comming Soon
 
-- Vision AI Integration - See docs: https://cloud.google.com/vision
-- Sheets Docs Version in English
+- Better model for Vision AI
+- Rubik for Kubernetes (daily execution deploy)
 
 ### Questions or Suggestions?
 

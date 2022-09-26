@@ -1,0 +1,9 @@
+client_id: <client_id>
+client_secret: <client_secret>
+access_token: <access_token>
+refresh_token: <refresh_token>
+big_query: <gcp_project>:<dataset_name>.<rubik_table_name>
+csv_file: <csv_path>
+batch_size: 8000
+big_query_gcs_location: gs://<name_of_your_bucket>
+rubik_custom_label: customLabel1|customLabel2|customLabel3|customLabel4
