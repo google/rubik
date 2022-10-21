@@ -21,6 +21,12 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 <img src="https://github.com/google/rubik/blob/main/images/rubik_3.png?raw=true" height="400px" width="100%">
 
+#### Example with Vision AI
+
+With this version, Rubik try to find the best image using Vision AI:
+
+![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
+
 ## How to Use
 
 ### Sheets Version (Manual)
