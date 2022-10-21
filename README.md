@@ -21,9 +21,9 @@ Rubik aims to resolve "The Problem" by selecting reproved offers by image and re
 
 ![Rubik Present](images/rubik_3.png?raw=true "Rubik Present")
 
-#### Example with Vision AI
+#### Demo with Vision AI
 
-With this version, Rubik try to find the best image using Vision AI:
+In this demo, Rubik replace the main reproved image with a better image using Vision AI:
 
 ![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
 
