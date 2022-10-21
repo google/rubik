@@ -21,7 +21,7 @@ import logging
 from apache_beam.options.value_provider import ValueProvider
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from merchant.rubik_product import RubikProduct
+from merchant.offer import RubikOffer
 
 logger = logging.getLogger("rubik")
 
@@ -56,7 +56,7 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
     def start_bundle(self):
         pass
 
-    def process(self, batch: Tuple[str, List[RubikProduct]], **kwargs):
+    def process(self, batch: Tuple[str, List[RubikOffer]], **kwargs):
         try:
             merchant_id, products = batch
             request_body = {
