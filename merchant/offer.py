@@ -41,18 +41,3 @@ class BatchOffers(beam.DoFn):
             batch.append(element)
         yield merchant_id, batch
 
-def rubik_offer_from_csv_line(line: str) -> RubikOffer:
-    fields = line.split(',')
-    product_id = f"{fields[RubikCsvFields.CHANNEL]}:{fields[RubikCsvFields.CONTENT_LANGUAGE]}:{fields[RubikCsvFields.TARGET_COUNTRY]}:{fields[RubikCsvFields.OFFER_ID]}"
-    additional_image_links = fields[RubikCsvFields.ADDITIONAL_IMAGE_LINKS].split(
-        RubikCsvFields.ADDITIONAL_IMAGE_LINKS_SEPARATOR)
-    return RubikOffer(product_id, fields[RubikCsvFields.MERCHANT_ID],
-                        fields[RubikCsvFields.IMAGE_LINK], additional_image_links)
-
-
-def rubik_offer_from_big_query_row(row):
-    product_id = f"{row['channel']}:{row['content_language']}:{row['target_country']}:{row['offer_id']}"
-    merchant_id = f"{row['merchant_id']}"
-    image_link = row['image_link']
-    additional_image_links = row['additional_image_links']
-    return RubikOffer(product_id, merchant_id, image_link, additional_image_links)
