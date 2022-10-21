@@ -21,7 +21,7 @@ import logging
 from apache_beam.options.value_provider import ValueProvider
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
-from rubik_lib.rubik_product import RubikProduct
+from merchant.offer import RubikOffer
 
 logger = logging.getLogger("rubik")
 
@@ -31,19 +31,20 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
       """
 
     def __init__(self, client_id: ValueProvider, client_secret: ValueProvider, access_token: ValueProvider,
-                 refresh_token: ValueProvider) -> None:
+                 refresh_token: ValueProvider, custom_label: ValueProvider) -> None:
         super().__init__()
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = access_token
         self.refresh_token = refresh_token
+        self.custom_label = custom_label
 
     def _get_merchant_center_service(self):
         credentials = Credentials(
-            token=self.access_token.get(),
-            refresh_token=self.refresh_token.get(),
-            client_id=self.client_id.get(),
-            client_secret=self.client_secret.get(),
+            token=self.access_token,
+            refresh_token=self.refresh_token,
+            client_id=self.client_id,
+            client_secret=self.client_secret,
             token_uri='https://accounts.google.com/o/oauth2/token',
             scopes=[
                 'https://www.googleapis.com/auth/content'
@@ -55,7 +56,7 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
     def start_bundle(self):
         pass
 
-    def process(self, batch: Tuple[str, List[RubikProduct]], **kwargs):
+    def process(self, batch: Tuple[str, List[RubikOffer]], **kwargs):
         try:
             merchant_id, products = batch
             request_body = {
@@ -64,10 +65,11 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
                     'merchantId': merchant_id,
                     'productId': product.product_id,
                     'method': 'update',
-                    'updateMask': 'imageLink,additionalImageLinks',
+                    'updateMask': f'imageLink,additionalImageLinks,{self.custom_label}',
                     'product': {
                         'imageLink': product.image_link,
-                        'additionalImageLinks': product.additional_image_links
+                        'additionalImageLinks': product.additional_image_links,
+                        f'{self.custom_label}': 'rubik'
                     }
                 } for i, product in enumerate(products)]
             }
@@ -76,6 +78,7 @@ class MerchantCenterUpdaterDoFn(beam.DoFn):
 
             request = self._get_merchant_center_service().products().custombatch(body=request_body)
             result = request.execute()
+
             if result['kind'] == 'content#productsCustomBatchResponse':
                 entries = result['entries']
                 for entry in entries:
