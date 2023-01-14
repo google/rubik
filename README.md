@@ -11,6 +11,9 @@ Rubik is open-source solutions that enables Merchant Center users to improve the
 Merchant Center offers can be reproved by a number of factors, Rubik aims to find those factors and fix it.
 The errors that Rubik aims to solve:
 
+- Offers reproved by Image
+- Offers reproved by GTIN
+
 #### Offers reproved by Image
 
 Rubik will select reproved offers and re-inserting them on Merchant Center automatically with different images from the same offer
