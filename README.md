@@ -1,5 +1,7 @@
 # Rubik
 
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+
 Rubik is open-source solutions that enables Merchant Center users to improve their offers. It can improve reproved offers or actual ones, with best Merchant Center guidelines. (https://support.google.com/merchants/answer/6101131?hl=en)
 
 ## How it Works?
