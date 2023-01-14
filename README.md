@@ -1,6 +1,6 @@
 # Rubik
 
-Rubik is open-source solutions that enables Merchant Center users to improve their offers. It can improve reproved offers or actual ones, with best Merchant Center guidelines (https://support.google.com/merchants/answer/6101131?hl=en)
+Rubik is open-source solutions that enables Merchant Center users to improve their offers. It can improve reproved offers or actual ones, with best Merchant Center guidelines. (https://support.google.com/merchants/answer/6101131?hl=en)
 
 ## How it Works?
 
@@ -9,17 +9,21 @@ Rubik is open-source solutions that enables Merchant Center users to improve the
 Merchant Center offers can be reproved by a number of factors, Rubik aims to find those factors and fix it.
 The errors that Rubik aims to solve:
 
-- Offers reproved by Image: Rubik will select reproved offers and re-inserting them on Merchant Center automatically with different images from the same offer
+#### Offers reproved by Image
+
+Rubik will select reproved offers and re-inserting them on Merchant Center automatically with different images from the same offer
 
 ![Rubik Present](images/rubik_3.png?raw=true "Rubik Present")
 
-#### Demo with Vision AI
+##### Demo with Vision AI
 
 In this demo, Rubik replace the main reproved image with a better image using Vision AI:
 
 ![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
 
-- Offers reproved by GTIN: Rubik will clean the offer GTIN, this could lead to another error (Required GTIN) but in most cases that offer can go to Google Shopping
+#### Offers reproved by GTIN: 
+
+Rubik will clean the offer GTIN, this could lead to another error (Required GTIN) but in most cases that offer will be approved.
 
 
 ## How to Use
