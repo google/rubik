@@ -1,31 +1,35 @@
 # Rubik
 
-Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
-The main image is reproved, but the additional images can be approved. Rubik will try every additional image from each offer and update them automatically
+Rubik is open-source solutions that enables Merchant Center users to improve their offers. It can improve reproved offers or actual ones, with best Merchant Center guidelines. (https://support.google.com/merchants/answer/6101131?hl=en)
 
 ## How it Works?
 
-### The Problem
+### Fix Offers
 
-When uploading new offers on Merchant Center, the Main Image may contain logos, additional text or any other component that will reprove the offer on the near future and can be fixed by a new upload (Please see: https://support.google.com/merchants/answer/6101131?hl=en).
+Merchant Center offers can be reproved by a number of factors, Rubik aims to find those factors and fix it.
+The errors that Rubik aims to solve:
 
-### How to Avoid this Problem
+- Offers reproved by Image
+- Offers reproved by GTIN
 
-Every Offer need to follow Merchant Center Guidelines to have a better long-term performance: [Merchant Center Guidelines](https://support.google.com/merchants/answer/6324350?hl=en#:~:text=We%20recommend%20images%20of%20at%20least%20800%20x%20800%20pixels.&text=Frame%20your%20product%20in%20the,%25%2C%20of%20the%20full%20image).
+#### Offers reproved by Image
 
-### Rubik
-
-Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
-
+Rubik will select reproved offers and re-inserting them on Merchant Center automatically with different images from the same offer
 
 ![Rubik Present](images/rubik_3.png?raw=true "Rubik Present")
 
-#### Demo with Vision AI
+##### Demo with Vision AI
 
 In this demo, Rubik replace the main reproved image with a better image using Vision AI:
 
 ![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
+
+#### Offers reproved by GTIN
+
+Rubik will clean the offer GTIN, this could lead to another error (Required GTIN) but in most cases that offer will be approved.
+
 
 ## How to Use
 
