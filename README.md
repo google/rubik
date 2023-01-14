@@ -26,7 +26,7 @@ In this demo, Rubik replace the main reproved image with a better image using Vi
 
 ![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
 
-#### Offers reproved by GTIN: 
+#### Offers reproved by GTIN
 
 Rubik will clean the offer GTIN, this could lead to another error (Required GTIN) but in most cases that offer will be approved.
 
