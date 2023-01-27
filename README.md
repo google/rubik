@@ -62,9 +62,11 @@ Rubik will clean the offer GTIN, this could lead to another error (Required GTIN
 
 Assuming that you have 100 offers with each offer having 6 images and the main image (first) is reproved.
 
-1 - The rubik_view.sql will find those 100 offers and will rotate the first image of each offer with the second one, so the second one will be the main image
-2 - If you don't want to use vision ai it will send all offers with the second offer being the main image. However, if you want to use vision AI it will score all images and chose the best one (from 2 to 6)
-3 - The output should be a offer updated with a different image, use the custom_label to see if that image will be approved and displayed into Google Ads.
+1. The rubik_view.sql will find those 100 offers and will rotate the first image of each offer with the second one, so the second one will be the main image
+
+2. If you don't want to use vision ai it will send all offers with the second offer being the main image. However, if you want to use vision AI it will score all images and choose the best one (from 2 to 6)
+
+3. The output should be a offer updated with a different image, use the custom_label to see if that image will be approved and displayed into Google Ads.
 
 #### Test
 
