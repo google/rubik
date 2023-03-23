@@ -1,105 +1,131 @@
-# Rubik
+# <img src="https://github.com/google/rubik/blob/main/images/rubik_logo.png?raw=true" width="100%" height="20%">
 
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+Rubik is an algorithm that reads Merchant Center feed and try to approve reproved offers by image.
 
-Rubik is a open-source solution that enables Merchant Center users to improve their offers. It can improve reproved offers or actual ones, with best Merchant Center guidelines. (https://support.google.com/merchants/answer/6101131?hl=en)
+The main image is reproved, but the additional images can be approved. Rubik will try every additional image from each offer and update them automatically
 
 ## How it Works?
 
-### Fix Offers
+### The Problem
 
-Merchant Center offers can be reproved by a number of factors, Rubik aims to find those factors and fix it.
-The errors that Rubik aims to solve:
+When uploading new offers on Merchant Center, the Main Image may contain logos, additional text or any other component that will reprove the offer on the near future and can be fixed by a new upload (Please see: https://support.google.com/merchants/answer/6101131?hl=en).
 
-- Offers reproved by Image
-- Offers reproved by GTIN
+### How to Avoid this Problem
 
-#### Offers reproved by Image
+Every Offer need to follow Merchant Center Guidelines to have a better long-term performance: [Merchant Center Guidelines](https://support.google.com/merchants/answer/6324350?hl=en#:~:text=We%20recommend%20images%20of%20at%20least%20800%20x%20800%20pixels.&text=Frame%20your%20product%20in%20the,%25%2C%20of%20the%20full%20image).
 
-Rubik will select reproved offers and re-inserting them on Merchant Center automatically with different images from the same offer
+### Rubik
 
-![Rubik Present](images/rubik_3.png?raw=true "Rubik Present")
+Rubik aims to resolve "The Problem" by selecting reproved offers by image and re-inserting them on Merchant Center automatically. 
 
-##### Demo with Vision AI
 
-In this demo, Rubik replace the main reproved image with a better image using Vision AI:
-
-![Rubik Example](images/rubik_example.gif?raw=true "Rubik Example")
-
-#### Offers reproved by GTIN
-
-Rubik will clean the offer GTIN, this could lead to another error (Required GTIN) but in most cases that offer will be approved.
-
+<img src="https://github.com/google/rubik/blob/main/images/rubik_3.png?raw=true" height="400px" width="100%">
 
 ## How to Use
 
-### Sheets Version (Manual)
-
-1. Copy this Spreadsheet: [Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
-2. Read this Documentation: [Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
-3. Merchant Center Admin Acess (Account Access -> Users)
-4. If you have any questions, please reach out in Discussions tab
-
-
-### Cloud Version (Automatic)
+### Cloud Version (Automatic, Procfile)
 
 #### Prerequisites
 
- 1. Content API - Enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
- 2. Machine with Docker and Python3+ (Required)
- 3. Merchant Center Admin Acess (Account Access -> Users), your user need to be MCA admin and with validated status
+ 1. Content API enabled on GCP (Required) - See: https://developers.google.com/shopping-content/guides/quickstart
+ 2. Machine with python3 (Required)
+ 3. Merchant Center Admin Acess (Account Access -> Users)
  4. OAuth Desktop Credentials on GCP, with CLIENT_ID and CLIENT_SECRET (Required)
     - Go to API & Services > OAuth Consent Screen > Mark it as Internal, there is no need to fill other fields
     - Then go to API & Services > Credentials > Create Credentials > OAuth Client ID
         - Application Type: Desktop
         - Name: rubik-desktop (can be anything)
- 5. Google Big Query - Enabled (Required)
-    - Rubik will read from your dataset. You need to have Bigquery's Merchant Center data transfer running: https://cloud.google.com/bigquery/docs/merchant-center-transfer
- 6. Google Cloud Storage - Bucket created (Required)
- 7. Google Cloud Vision AI - Enabled on your GCP project (Required if you want to use Vision AI) (https://cloud.google.com/vision)
+ 5. Big Query (Optional).
 
-#### Example
-
-Assuming that you have 100 offers with each offer having 6 images and the main image (first) is reproved.
-
-1. The rubik_view.sql will find those 100 offers and will rotate the first image of each offer with the second one, so the second one will be the main image
-
-2. If you don't want to use vision ai it will send all offers with the second offer being the main image. However, if you want to use vision AI it will score all images and choose the best one (from 2 to 6)
-
-3. The output should be a offer updated with a different image, use the custom_label to see if that image will be approved and displayed into Google Ads.
-
-#### Test
+#### Deploy
 
 1 - Prepare the CSV file (follow the sample.CSV) or Bigquery table (follow the sql/rubik_view.sql)
-
 
 2 - Generate your tokens, the following code should output your Access Token and Secret Access Token to use Merchant Center API:
 
 ``` shell
-git clone https://github.com/google/rubik
-cd rubik
-python3 generate_token.py --client_id <GCP_CLIENT_ID> --client_secret <GCP_CLIENT_SECRET>
+$ git clone https://github.com/google/rubik
+$ cd rubik
+$ python3 generate_token.py --client_id <OAUTH_CLIENT_ID> --client_secret <OAUTH_CLIENT_SECRET>
 ```
+This command will output refresh and access tokens. Save them to use later on this config.
 
-3 - Fill rubik.yaml file with your values. If CSV file is informed, it will execute only the CSV file.
+3 - Edit config files
 
-4 - Run:
+On a text editor replace the placeholders on the config files:
+
+- To run locally configure run_local.sh 
+- To run on Cloud configure Procfile
+
+
+- GCP_PROJECT_ID: GCP Project ID where Rubik will run.
+- GCP REGION: the region, for example: us-central1.
+- SERVICE ACCOUNT: can be the defalt one or one special for the project. It needs roles:
+- OAUTH_CLIENT_ID
+- OAUTH_CLIENT_SECRET
+- OAUTH_CLIENT_REFRESH_TOKEN
+- BQ_DATASET
+- BQ_TABLE
+- BUCKET_NAME
+
+3 - Run Rubik locally, look at rubik.log to see the output. Before running the run_local.sh, enter the necessary information:
+
+Using CSV (remember to set option to CSV):
 
 ``` python3
 
-python3.7 main.py rubik.yaml
+$ ./run_local.sh
+
+```
+Using Bigquery (remember to set option to BQ):
+
+``` python3
+
+$ ./run_local.sh
+
+```
+4 - Create Cloud Run job
+
+- GCP_PROJECT_ID is the GCP Project ID where Rubik will run.
+- GCP REGION is the region, for example: us-central1.
+- SERVICE ACCOUNT can be the defalt one or one special for the project. It needs roles:
+  - roles/bigquery.user
+  - roles/cloudscheduler.admin
+  - roles/run.invoker
+  - roles/run.viewer
+  - roles/run.serviceAgent
+  - roles/runtimeconfig.admin
+  - roles/cloudbuild.builds.editor
+
+
+``` shell
+$ gcloud builds submit --pack=env=GOOGLE_PYTHON_VERSION="3.9.2",image=gcr.io/<GCP_PROJECT ID>/run-rubik
+$ gcloud beta run jobs create job-rubik \ 
+--image gcr.io/<GCP_PROJECT ID>/run-rubik \
+--max-retries 2 \
+--region <GCP REGION> \
+--service-account=<SERVICE ACCOUNT> \
+--execute-now 
 
 ```
 
-#### Deploy
+When the last command finish running an URL will be written on screen. This will take you to the executing Cloud Run Job.
 
-1 - Use the following, don't forget to check if rubik.yaml and your gcp-rubik-project is configured:
+5 - Schedule execution
+To do this, we create a Cloud Scheduler job with the Cloud Run job as a target.
 
-``` docker
+SCHEDULER_JOB_NAME 
+TIMEZONE is in format: America/Buenos_Aires
+Schedule is in CRON format. For example daily at 00.00hs : 0 0 * * *
 
-docker build --no-cache . -t rubik:latest
-docker run --rm rubik:latest
-
+``` shell
+gcloud scheduler jobs create http <SCHEDULER_JOB_NAME> \
+  --location <GCP REGION> \
+  --schedule="<SCHEDULE>" \
+  --time-zone="<TIMEZONE>" \
+  --uri="https://<GCP REGION>-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/<GCP_PROJECT ID>/jobs/job-rubik:run" \
+  --http-method POST \
+  --oauth-service-account-email <SERVICE ACCOUNT>
 ```
 
 
@@ -107,9 +133,8 @@ docker run --rm rubik:latest
 
 ### Comming Soon
 
-- Better model for Vision AI
-- Rubik for Kubernetes (daily execution deploy)
-- Version with service account
+- Vision AI Integration - See docs: https://cloud.google.com/vision
+- Sheets Docs Version in English
 
 ### Questions or Suggestions?
 

@@ -1,9 +1,7 @@
-google-api-python-client==2.45.0
-google-cloud-bigquery==2.34.3
-google-auth-oauthlib==0.4.5
-oauth2client==3.0.0
-apache-beam==2.38.0
-google-api-core==2.10.1
-google-cloud-vision==3.1.2
-PyYAML==5.4.1
-google-cloud==0.34.0
+google-api-python-client>=2.45.0
+google-cloud-bigquery>2
+google-auth-oauthlib>=0.4.5
+oauth2client
+apache-beam[gcp]==2.45.0
+google-api-core>2
+google-cloud>=0.34.0

@@ -1,0 +1,1 @@
+web: python3 main.py --runner DirectRunner --client_id=OAUTH_CLIENT_ID --client_secret=OAUTH_CLIENT_SECRET --refresh_token=OAUTH_REFRESH_TOKEN --bq="GCP_PROJECT_ID.BQ_DATASET.BQ_TABLE" --temp_location="gs://BUCKET_NAME" 

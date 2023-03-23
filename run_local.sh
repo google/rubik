@@ -17,9 +17,9 @@
 python3 -m pip install -r requirements.txt
 python3 main.py \
         --runner DirectRunner \
-        --csv=sample.csv \
-        --client_id= \
-        --client_secret= \
-        --access_token= \
-        --refresh_token=
-#For bq use --bq="project:dataset.table" --temp_location="gs://some_bucket" \
+        --client_idi=<OAUTN_CLIENT_ID> \
+        --client_secret=<OAUTN_CLIENT_SECRET> \
+        --access_token=<OAUTN_ACCESS_TOKEN> \
+        --refresh_token=<OAUTH_REFRESH_TOKEN> \
+        --bq="<GCP_PROJECT_ID:BQ_DATASET.BQ_TABLE>" \
+        --temp_location="gs://<BUCKET_NAME>"

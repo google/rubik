@@ -30,10 +30,9 @@ CREATE OR REPLACE TABLE `project.dataset.tablename` AS (
             SELECT
                 offer_id,
                 merchant_id,
-                channel,
-                content_language,
-                target_country,
+		product_id,
                 image_link,
+		aggregator_id,
                 (
                     SELECT
                         ARRAY_AGG(additional_image_link)
@@ -57,16 +56,14 @@ CREATE OR REPLACE TABLE `project.dataset.tablename` AS (
     SELECT
         offer_id,
         merchant_id,
-        channel,
-        content_language,
-        target_country,
         additional_image_links[SAFE_OFFSET(0)] AS image_link,
-        ARRAY_CONCAT((
-            SELECT
-            ARRAY_AGG(additional_image_link)
-            FROM
-            UNNEST(additional_image_links) AS additional_image_link
-            WHERE
-            additional_image_link != additional_image_links[SAFE_OFFSET(0)]), [image_link]) AS additional_image_links
+	aggregator_id,
+	(
+	 SELECT
+	 ARRAY_AGG(additional_image_link)
+	 FROM
+	 UNNEST(ARRAY_CONCAT(additional_image_links,[image_link])) AS additional_image_link
+	 WHERE
+	 additional_image_link != additional_image_links[SAFE_OFFSET(0)]) AS additional_image_links,
     FROM ProductsWithAdditionalImages
 );
