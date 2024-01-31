@@ -16,10 +16,10 @@
 
 python3 -m pip install -r requirements.txt
 python3 main.py \
-        --runner DirectRunner \
-        --csv=sample.csv \
-        --client_id= \
-        --client_secret= \
-        --access_token= \
-        --refresh_token=
+        --runner DirectRunner
+#        --csv=sample.csv \
+#        --client_id= \
+#        --client_secret= \
+#        --access_token= \
+#        --refresh_token=
 #For bq use --bq="project:dataset.table" --temp_location="gs://some_bucket" \
