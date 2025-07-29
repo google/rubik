@@ -33,14 +33,6 @@ Rubik will clean the offer GTIN, this could lead to another error (Required GTIN
 
 ## How to Use
 
-### Sheets Version (Manual)
-
-1. Copy this Spreadsheet: [Rubik - Spreadsheet Version](https://docs.google.com/spreadsheets/d/1V9Sim1E6waqWJaqppjDDuhgfYQqUKTXkcF-zGQXOBIA/copy?usp=sharing)
-2. Read this Documentation: [Rubik - Spreadsheet Version Docs](https://docs.google.com/document/d/1q7rgzG88ZS9-SKSItI4H1DPsXmmNDDfr1V_VaQNEpZ8/copy)
-3. Merchant Center Admin Acess (Account Access -> Users)
-4. If you have any questions, please reach out in Discussions tab
-
-
 ### Cloud Version (Automatic)
 
 #### Prerequisites
